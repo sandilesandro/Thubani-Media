@@ -234,7 +234,7 @@ footer {
         margin: 20px 0 !important;
         font-size: 1.5rem; /* Larger for touch targets */
         display: block;
-        Color:#de4d25;
+        Color:#ff6b01;
     }
 
     /* 3. Show the Hamburger Button */
@@ -267,6 +267,7 @@ footer {
 @media (min-width: 1001px) {
     .menu-toggle { display: none; }
 }
+
 
 
 
