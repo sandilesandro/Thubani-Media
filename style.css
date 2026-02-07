@@ -209,3 +209,61 @@ footer {
     visibility: visible;
     transform: translateY(0);
 }
+
+/* --- MOBILE NAVIGATION OPTIMIZATION --- */
+
+@media (max-width: 1000px) {
+    /* 1. Hide the standard horizontal nav */
+    .nav-menu {
+        position: fixed;
+        top: 90px; /* Height of your header */
+        left: -100%; /* Start off-screen */
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        height: calc(100vh - 90px);
+        text-align: center;
+        transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        padding-top: 50px;
+        z-index: 999;
+        border-top: 1px solid var(--border);
+    }
+
+    /* 2. Style nav links for vertical stack */
+    .nav-menu a {
+        margin: 20px 0 !important;
+        font-size: 1.5rem; /* Larger for touch targets */
+        display: block;
+    }
+
+    /* 3. Show the Hamburger Button */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--black);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* 4. The "Active" state when menu is open */
+    .nav-menu.active {
+        left: 0;
+    }
+
+    /* 5. Transform Hamburger to 'X' when active */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+
+/* Ensure menu-toggle is hidden on desktop */
+@media (min-width: 1001px) {
+    .menu-toggle { display: none; }
+}
+
