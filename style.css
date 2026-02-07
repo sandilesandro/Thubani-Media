@@ -1,4 +1,4 @@
-/* --- SETTINGS & CORE --- */
+1/* --- SETTINGS & CORE --- */
 :root {
     --orange: #FF6B00;
     --black: #111111;
@@ -248,7 +248,7 @@ footer {
         width: 25px;
         height: 3px;
         margin: 5px auto;
-        background-color: var(--#ffffff);
+        background-color: var(--#111111);
         transition: all 0.3s ease-in-out;
     }
 
@@ -267,6 +267,7 @@ footer {
 @media (min-width: 1001px) {
     .menu-toggle { display: none; }
 }
+
 
 
 
