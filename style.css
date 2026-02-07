@@ -113,7 +113,7 @@ nav ul li a:hover {
 .hero {
     height: vh;
     /* Uses the uploaded header image */
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('header.jpg');
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://www.freepik.com/premium-photo/two-people-wearing-virtual-reality-glasses-one-wearing-virtual-reality-headset_244943781.htm#fromView=search&page=1&position=9&uuid=9dd1a5d7-d2ed-4c3b-b8a4-b03476934ecd&query=Visuals+for+the+tech+era');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -283,4 +283,5 @@ footer {
     .hero-content h1 { font-size: 3rem; letter-spacing: -1.5px; }
     .section, .contact-section { padding: 80px 25px; }
     .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+
 }
