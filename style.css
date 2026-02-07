@@ -219,7 +219,7 @@ footer {
         top: 90px; /* Height of your header */
         left: -100%; /* Start off-screen */
         flex-direction: column;
-        background: #ff6b01;
+        background: #ffffff;
         width: 100%;
         height: calc(100vh - 90px);
         text-align: center;
@@ -267,3 +267,4 @@ footer {
 @media (min-width: 1001px) {
     .menu-toggle { display: none; }
 }
+
