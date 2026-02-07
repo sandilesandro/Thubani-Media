@@ -3,66 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thubani Media | Visual Narratives</title>
+    <title>Thubani Media | Graphic Design Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="Thubani-Logo_1.png">
 </head>
 <body>
 
-    <div class="main-wrapper" id="top">
-        
-        <nav class="sticky-nav">
-            <div class="logo">THUBANI<span>MEDIA</span></div>
-            <ul>
-                <li><a href="#top">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contacts</a></li>
-                <li><a href="#about">About Us</a></li>
-            </ul>
-            <a href="#contact" class="nav-cta">Get In Touch →</a>
+    <header>
+        <div class="logo">Thubani<span>.</span>Media</div>
+        <nav>
+            <a href="#studio">About us</a>
+            <a href="#work">Work</a>
+            <a href="#contact" class="btn-cta">Start Project</a>
         </nav>
+    </header>
 
-        <header class="hero">
-            <div class="hero-content">
-                <h1>Visual Narratives.<br>Cinematic Language.</h1>
-                <p>DSGN is a visual studio creating cinematic visual worlds for brands and long-form storytelling based in South Africa.</p>
-                <a href="#services" class="cta-btn">Find out what we do</a>
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-text">
+                <span class="label">Graphic Design Studio</span>
+                <h1>Building <i>Visual</i> Infrastructure.</h1>
+                <p>We design identities for the entities that power the modern network.</p>
             </div>
-        </header>
+            <div class="hero-image">
+                
+            </div>
+        </section>
 
-        <section id="services" class="section">
-            <span class="section-tag">// Our Expertise</span>
-            <div class="grid">
-                <div class="card">
-                    <h3>Digital Strategy</h3>
-                    <p>Navigating the South African digital landscape.</p>
-                </div>
-                <div class="card">
-                    <h3>Content Creation</h3>
-                    <p>High-quality videography and photography.</p>
-                </div>
-                <div class="card">
-                    <h3>Social Media</h3>
-                    <p>Engaging management and growth strategies.</p>
+        <section id="studio" class="studio">
+            <div class="studio-content">
+                <span class="label1">The Philosophy</span>
+                <h2>Design as <i>Architecture.</i></h2>
+                <div class="studio-grid">
+                    <div class="logic-item">
+                        <small>01 / PRECISION</small>
+                        <p>We operate on strict grid systems to ensure brand longevity and technical scalability.</p>
+                    </div>
+
+                    <div class="logic-item">
+                        <small>02 / SECTOR</small>
+                        <p>Specialized branding for ISPs, Software Labs, and Infrastructure firms in South Africa.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <h2>Let's Create.</h2>
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea rows="4" placeholder="Your Vision" required></textarea>
-                <button type="submit" class="cta-btn">Send Message</button>
-            </form>
+        <section id="work" class="work-grid">
+            <div class="section-title">
+                <span class="label">Project Archive</span>
+            </div>
+
+            <div class="cards-container">
+                <a href="#" class="card">
+                    <div class="card-content">
+                        <small>PROJECT 01</small>
+                        <h3><i>Acumate Solutions</i></h3>
+                        <p>Visualising Systems</p>
+                    </div>
+                </a>
+
+                <a href="#" class="card">
+                    <div class="card-content">
+                        <small>PROJECT 02</small>
+                        <h3><i>PLUXNET</i></h3>
+                        <p>Network Identity</p>
+                    </div>
+                </a>
+
+                <a href="#" class="card">
+                    <div class="card-content">
+                        <small>PROJECT 03</small>
+                        <h3><i>BOTTOMLINE</i></h3>
+                        <p>FinTech Interface</p>
+                    </div>
+                </a>
+
+            </div>
         </section>
 
-        <footer>
-            <p>&copy; 2026 Thubani Media. Made with pride in South Africa.</p>
-        </footer>
+        <section id="contact" class="contact">
+            <div class="contact-wrap">
+                <h2>Ready to <i>deploy?</i></h2>
+                <a href="mailto:hello@thubani.media" class="email">hello@thubani.media</a>
+            </div>
+        </section>
+    </main>
 
-        <a href="#top" class="back-to-top" id="backToTop">↑</a>
-    </div>
+    <footer>
+        <p>© 2026 Thubani Media. All rights reserved.</p>
+    </footer>
+
+    <button id="backToTop" title="Go to top">
+    <span class="arrow">↑</span>
+    
+</button>
+
+<script>
+    const btn = document.querySelector("#backToTop");
+
+    window.addEventListener("scroll", () => {
+        // If we scroll down more than 400px, add the 'show' class
+        if (window.scrollY > 400) {
+            btn.classList.add("show");
+        } else {
+            btn.classList.remove("show");
+        }
+    });
+
+    btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
 
 </body>
 </html>
