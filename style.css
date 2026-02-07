@@ -1,4 +1,4 @@
-1/* --- SETTINGS & CORE --- */
+/* --- SETTINGS & CORE --- */
 :root {
     --orange: #FF6B00;
     --black: #111111;
@@ -219,7 +219,7 @@ footer {
         top: 90px; /* Height of your header */
         left: -100%; /* Start off-screen */
         flex-direction: column;
-        background: var(--white);
+        background: #ff6b01;
         width: 100%;
         height: calc(100vh - 90px);
         text-align: center;
@@ -232,9 +232,9 @@ footer {
     /* 2. Style nav links for vertical stack */
     .nav-menu a {
         margin: 20px 0 !important;
-        font-size: 1.5rem; /* Larger for touch targets */
+        font-size: 1.9rem; /* Larger for touch targets */
         display: block;
-        Color:#ff6b01;
+        color: #ffffff;
     }
 
     /* 3. Show the Hamburger Button */
@@ -248,7 +248,7 @@ footer {
         width: 25px;
         height: 3px;
         margin: 5px auto;
-        background-color: black;
+        background-color: var(--orange);
         transition: all 0.3s ease-in-out;
     }
 
@@ -267,12 +267,3 @@ footer {
 @media (min-width: 1001px) {
     .menu-toggle { display: none; }
 }
-
-
-
-
-
-
-
-
-
