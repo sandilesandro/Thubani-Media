@@ -23,7 +23,7 @@ i { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400
 .label { 
     font-size: 11px; 
     font-weight: 900; 
-    color: var(--border); 
+    color: var(--orange); 
     text-transform: uppercase; 
     letter-spacing: 3px; 
     display: block; 
@@ -31,7 +31,7 @@ i { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400
 }
 
 .label1{
-    color: #FF6B00;
+    color: #ffffff;
     font-size: 15px; 
     font-weight: 600; 
 }
@@ -219,7 +219,7 @@ footer {
         top: 90px; /* Height of your header */
         left: -100%; /* Start off-screen */
         flex-direction: column;
-        background: #ffffff;
+        background: hwb(14 10% 0% / 0.979);
         width: 100%;
         height: calc(100vh - 90px);
         text-align: center;
@@ -248,7 +248,7 @@ footer {
         width: 25px;
         height: 3px;
         margin: 5px auto;
-        background-color: var(--white);
+        background-color: var(--orange);
         transition: all 0.3s ease-in-out;
     }
 
@@ -267,5 +267,3 @@ footer {
 @media (min-width: 1001px) {
     .menu-toggle { display: none; }
 }
-
-
