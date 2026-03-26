@@ -1,156 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thubani Media | Graphic Design Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="Thubani-Logo_1.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.21" />
+  <title>Thubani Media | Visual Infrastructure</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-canvas:   #fbfaf8; 
+      --bg-void:     #0d0d0d;
+      --bg-industrial:#edebe7;
+      --text-dark:   #111111;
+      --text-light:  #f4f4f4;
+      --accent:      #ff4503; 
+      --dim-dark:    #727272;
+      --rule-light:  #dbdad6;
+      --rule-dark:   #222222;
+      --serif:       'Playfair Display', serif;
+      --sans:        'Inter', sans-serif;
+      --mono:        'JetBrains Mono', monospace;
+      --edge-pad:    clamp(1.21rem, 4.21vw, 3.21rem); 
+      --nav-h:       72.21px;
+    }
+
+    /* ─── CORE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-canvas); color: var(--text-dark); font-family: var(--sans); line-height: 1.62; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* ─── ASSET ANIMATIONS ─── */
+    @keyframes glassFloat {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-21.21px) rotate(3.21deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    @keyframes pulseSoft {
+      0% { transform: scale(1); opacity: 0.81; }
+      50% { transform: scale(1.12); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.81; }
+    }
+
+    .glass-asset { position: absolute; pointer-events: none; z-index: 1.21; filter: drop-shadow(0 10.21px 21.21px rgba(0,0,0,0.12)); }
+    .cube-asset { width: 321.21px; top: 12.21%; right: -5.21%; animation: glassFloat 8.21s infinite ease-in-out; }
+    .triangle-asset { width: 421.21px; bottom: 12.21%; left: -8.21%; animation: glassFloat 10.21s infinite ease-in-out reverse; opacity: 0.41; }
+    .sphere-node { width: 62.21px; animation: pulseSoft 4.21s infinite ease-in-out; }
+
+    /* ─── NAVIGATION ─── */
+    nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(251, 250, 248, 0.81); backdrop-filter: blur(18.21px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .nav-inner { padding: 0 var(--edge-pad); height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { max-height: 32.21px; width: auto; }
+    
+    .nav-links { display: flex; gap: 3.21rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 0.71rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--dim-dark); transition: 0.31s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* Hamburger Menu & X Animation */
+    .burger { display: none; cursor: pointer; background: none; border: none; padding: 0.81rem; z-index: 2000; position: relative; }
+    .burger span { display: block; width: 24.21px; height: 1.21px; background: var(--text-dark); margin: 6.21px 0; transition: 0.41s; transform-origin: center; }
+    
+    .burger.active span:nth-child(1) { transform: translateY(7.42px) rotate(45deg); background: #fff; opacity: 100%;}
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: translateY(-7.42px) rotate(-45deg); background: #fff; opacity: 100% }
+
+    /* Mobile Overlay */
+    .mobile-nav { position: fixed; top: 0; right: -100%; width: 100%; height: 100dvh; background: var(--bg-void); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1050; transition: 0.61s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mobile-nav.active { right: 0; }
+    .mobile-nav a { font-family: var(--sans); color: #fff; font-size: 1.81rem; font-weight: 300; text-transform: uppercase; letter-spacing: 0.41rem; text-decoration: none; margin: 1.21rem 0; opacity: 0; transform: translateY(21.21px); transition: 0.41s; }
+    .mobile-nav.active a { opacity: 1; transform: translateY(0); transition-delay: 0.31s; }
+
+    /* ─── BACK TO TOP ─── */
+    .btn-top { position: fixed; bottom: 32.21px; right: 32.21px; width: 48.21px; height: 48.21px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 4.21px; border: none; cursor: pointer; z-index: 900; opacity: 0; visibility: hidden; transition: 0.41s; box-shadow: 0 4.21px 21.21px rgba(255, 69, 3, 0.21); }
+    .btn-top.is-visible { opacity: 1; visibility: visible; }
+
+    /* ─── HERO ─── */
+    .hero { 
+      position: relative;
+      min-height: 100dvh; 
+      padding-top: var(--nav-h); 
+      background-image: linear-gradient(rgba(0,0,0,0.51), rgba(0,0,0,0.51)), url('h.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex; align-items: center; 
+      padding-left: var(--edge-pad); 
+      overflow: hidden;
+    }
+    .hero h1 { font-family: var(--serif); color: #ffffff; font-size: clamp(3.21rem, 9.21vw, 8.81rem); line-height: 0.89; z-index: 2.21; position: relative; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+
+    .scroll-down {
+      position: absolute; bottom: 4.21rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 1.21rem; text-decoration: none; z-index: 10;
+    }
+    .scroll-line {
+      width: 1.21px; height: 64.21px; background: rgba(255,255,255,0.21);
+      position: relative; overflow: hidden;
+    }
+    .scroll-line::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--accent); transform: translateY(-100%);
+      animation: scroll-flow 2.21s infinite cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    @keyframes scroll-flow { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+    .scroll-text { font-family: var(--mono); font-size: 0.61rem; color: #fff; text-transform: uppercase; letter-spacing: 0.21rem; }
+
+    /* ─── SECTIONS ─── */
+    section { position: relative; padding: 12.21vh var(--edge-pad); }
+    .label { font-family: var(--mono); color: var(--accent); font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.16rem; display: block; margin-bottom: 3.21rem; }
+    .reveal { opacity: 0; transform: translateY(32.21px); transition: 1.21s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: none; }
+
+    .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6.21rem; }
+    .sector-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(221.21px, 1fr)); gap: 1.21rem; margin-top: 6.21rem; }
+    .sector-card { padding: 3.21rem; border: 1px solid var(--rule-light); background: #fff; transition: 0.31s; }
+    .sector-card:hover { border-color: var(--accent); transform: translateY(-4.21px); }
+
+    /* Visual Systems */
+    #systems { background: var(--bg-void); color: var(--text-light); }
+    .cap-row { display: grid; grid-template-columns: 81.21px 1.51fr 1fr; padding: 4.21rem; background: #151515; border: 1px solid var(--rule-dark); margin-bottom: 1.21rem; }
+
+    /* Portfolio Masonry */
+    #portfolio { padding: 0; background: var(--bg-void); }
+    .masonry { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule-dark); }
+    .masonry-item { height: 421.21px; overflow: hidden; }
+    .masonry-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.41; filter: grayscale(1); transition: 0.81s; }
+    .masonry-item:hover img { opacity: 1; filter: grayscale(0); }
+
+    /* Industrial Contact */
+    #industrial { background: var(--bg-industrial); }
+    .form-wrap { background: #fff; padding: 4.21rem; border: 1px solid var(--rule-light); }
+    .form-group { margin-bottom: 2.21rem; }
+    .form-group label { display: block; font-family: var(--mono); font-size: 0.61rem; text-transform: uppercase; margin-bottom: 0.81rem; color: var(--dim-dark); }
+    .form-group input, .form-group textarea { width: 100%; padding: 1.21rem; border: 1px solid var(--rule-light); background: var(--bg-canvas); outline: none; }
+    .submit-btn { width: 100%; padding: 1.21rem; background: var(--accent); color: #fff; border: none; font-family: var(--mono); font-size: 0.71rem; text-transform: uppercase; letter-spacing: 0.21rem; cursor: pointer; transition: 0.31s; }
+
+    footer { background: #050505; color: #fff; padding: 6.21vh var(--edge-pad) 3.21rem; border-top: 1px solid #111; }
+    .f-bottom { display: flex; justify-content: space-between; font-size: 0.61rem; font-family: var(--mono); opacity: 0.31; }
+
+    @media (max-width: 1024.21px) { 
+      .grid-split { grid-template-columns: 1fr; gap: 4.21rem; } 
+      .masonry { grid-template-columns: repeat(2, 1fr); } 
+      .nav-links { display: none; } 
+      .burger { display: block; }
+    }
+  </style>
 </head>
 <body>
 
-    <header class="main-header">
-    <div class="logo">Thubani<span>.</span>Media</div>
-    
-    <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+  <button class="btn-top" id="btnTop" onclick="window.scrollTo(0,0)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo"><img src="Thubanimedia_Logo_Wordmark.png" alt="Thubani Media"></div>
+      
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#leadership">Director</a></li>
+        <li><a href="#systems">Systems</a></li>
+        <li><a href="#portfolio">Deployments</a></li>
+        <li><a href="#industrial">Contact</a></li>
+      </ul>
+
+      <button class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+  </nav>
 
-    <nav class="nav-menu">
-        <a href="#studio">About Us</a>
-        <a href="#work">Work</a>
-        <a href="#contact" class="nav-button">Start Project</a>
-    </nav>
-</header>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#leadership" onclick="toggleMenu()">Director</a>
+    <a href="#systems" onclick="toggleMenu()">Systems</a>
+    <a href="#portfolio" onclick="toggleMenu()">Deployments</a>
+    <a href="#industrial" onclick="toggleMenu()">Contact</a>
+  </div>
 
-    <main>
-        <section id="hero" class="hero">
-            <div class="hero-text">
-                <span class="label1">Graphic Design Studio</span>
-                <h1>Building <i>Visual</i> Infrastructure.</h1>
-                <p>We design identities for the entities that power the modern network.</p>
-            </div>
-            <div class="hero-image">
-                
-            </div>
-        </section>
+  <section class="hero">
+    <img src="images/cube.png" class="glass-asset cube-asset">
+    <h1 class="reveal">Engineering <em>Visual</em> Authority.</h1>
+    <a href="#about" class="scroll-down reveal"><div class="scroll-line"></div><span class="scroll-text">Scroll Down</span></a>
+  </section>
 
-        <section id="studio" class="studio">
-   <div class="studio-text">
-    <span class="label">The Philosophy</span>
-    <h2>Architecting <i>Identity.</i></h2>
-    <p class="lead-text">
-        At Thubani Media, we engineer the visual infrastructure that allows technical entities to speak with authority. 
-    </p>
-    <p>
-        In an era defined by high-speed connectivity and complex software ecosystems, your brand is the interface between your technology and your users. We remove the noise to reveal the structure.
-    </p>
-    <br>
-    <p>
-        "Our approach is rooted in the belief that design should function with the same reliability as the backend systems it represents. We move beyond superficial aesthetics to develop rigid visual frameworks mathematically aligned grids and disciplined typography that translate complex data into clear human experiences.
-    </p>
-    <br>
-    <p>
-        Ultimately, we serve the builders of South Africa’s digital landscape. Whether it is an ISP deploying fiber or a FinTech firm revolutionizing payments, we provide the aesthetic authority required to command market trust. We don't just build logos; we deploy the visual protocols for technical communication."
-    </p>
-<br>
-    <p> <i>- Sandile Mnguni</i></p>
-    <p>Founder</p>
-</div>
-</section>
+  <section id="about">
+    <img src="images/Diamond.png" class="glass-asset triangle-asset">
+    <span class="label reveal">The Core Intent</span>
+    <div class="grid-split reveal">
+      <div class="about-lead"><h2 style="font-family: var(--serif); font-size: 3.21rem;">Technical Precision.</h2></div>
+      <div class="about-body">
+        <p>Thubani Media engineers visual infrastructure for the industrial and corporate landscapes of South Africa.</p>
+        <img src="images/triangle.png" class="sphere-node" style="margin-top: 2.21rem;">
+      </div>
+    </div>
+    <div class="sector-grid reveal">
+      <div class="sector-card"><h3>Cloud ERP</h3><p>Acumatica visualization and strategy.</p></div>
+      <div class="sector-card"><h3>Public Sector</h3><p>Technical RFQ frameworks.</p></div>
+      <div class="sector-card"><h3>Agriculture</h3><p>Identity for Gentlemen Farmers Club.</p></div>
+    </div>
+  </section>
 
-        <section id="work" class="work-grid">
-            <div class="section-title">
-                <span class="label">Our Clients</span>
-            </div>
+<section id="leadership" style="background: #fff; border-bottom: 1px solid var(--rule-light);">
+    <span class="label reveal">Executive Infrastructure</span>
+    <div class="grid-split reveal">
+      <div>
+        <h2 class="lead-text">Sandile <br><em>Mnguni</em></h2>
+      </div>
+      <div class="bio-content">
+        <p>As the Lead Strategic Director of Thubani Media, Sandile engineers the visual infrastructure required for complex technical and corporate entities.</p>
+        <p>With deep expertise in multimedia strategy and web architecture, he bridges the gap between high-end aesthetic design and functional industrial requirements.</p>
+        
+        <div class="stats-row">
+          <div class="stat-item">
+            <h4>Strategic Role</h4>
+            <p>Directing visual identity for ERP partners and public sector procurement frameworks.</p>
+          </div>
+          <div class="stat-item">
+            <h4>Technical Core</h4>
+            <p>Specialized in Adobe Creative Suite, Autodesk Maya, and Cloud ERP integrations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="cards-container">
-                <a href="#" class="card">
-                    <div class="card-content">
-                        <small>PROJECT 01</small>
-                        <h3><i>Blykbrein Pyn</i></h3>
-                        <p>Visualising Systems</p>
-                    </div>
-                </a>
+  <section id="systems">
+    <span class="label reveal">Visual Systems</span>
+    <div class="cap-row reveal">
+      <span style="color: var(--accent); font-family: var(--mono);">01.</span>
+      <div><h3>Multimedia Strategy</h3><p>Cinematic logic for institutional compliance.</p></div>
+      <div style="font-family: var(--mono); font-size: 0.61rem; color: var(--accent); text-align: right;"></div>
+    </div>
+    <div class="cap-row reveal">
+      <span style="color: var(--accent); font-family: var(--mono);">02.</span>
+      <div><h3>Multimedia Strategy</h3><p>Cinematic logic for institutional compliance.</p></div>
+      <div style="font-family: var(--mono); font-size: 0.61rem; color: var(--accent); text-align: right;"></div>
+    </div>
+    <div class="cap-row reveal">
+      <span style="color: var(--accent); font-family: var(--mono);">03.</span>
+      <div><h3>Multimedia Strategy</h3><p>Cinematic logic for institutional compliance.</p></div>
+      <div style="font-family: var(--mono); font-size: 0.61rem; color: var(--accent); text-align: right;"></div>
+    </div>
+  </section>
 
-                <a href="#" class="card">
-                    <div class="card-content">
-                        <small>PROJECT 02</small>
-                        <h3><i>PLUXNET</i></h3>
-                        <p>Network Identity</p>
-                    </div>
-                </a>
+  <section id="portfolio">
+    <div class="masonry reveal">
+      <div class="masonry-item"><img src="msf.jpg"></div>
+      <div class="masonry-item"><img src="mbvit.png"></div>
+      <div class="masonry-item"><img src="pluxnet.png"></div>
+      <div class="masonry-item"><img src="gfc.png"></div>
+    </div>
+  </section>
 
-                <a href="#" class="card">
-                    <div class="card-content">
-                        <small>PROJECT 03</small>
-                        <h3><i>BOTTOMLINE IT</i></h3>
-                        <p>FinTech Interface</p>
-                    </div>
-                </a>
+  <section id="industrial">
+    <span class="label reveal">Transmission</span>
+    <div class="grid-split reveal">
+      <div class="contact-info">
+        <h2 style="font-family: var(--serif); font-size: 3.21rem;">Initiate <em>Strategic</em> Deployment.</h2>
+        <p style="margin-top: 2.21rem; color: var(--dim-dark);">Fill out the technical brief below to begin your entity's visual audit.</p>
+      </div>
+      <div class="form-wrap">
+        <form id="contactForm">
+          <div class="form-group"><label>Name</label><input type="text" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" required></div>
+          <div class="form-group"><label>Technical Brief</label><textarea rows="4" required></textarea></div>
+          <button type="submit" class="submit-btn">Send</button>
+        </form>
+        <div id="formSuccess" style="display:none; text-align: center; padding: 2.21rem;">
+          <h3 style="font-family: var(--serif); font-size: 1.81rem; color: var(--accent);">Transmission Received.</h3>
+          <p style="font-family: var(--mono); font-size: 0.71rem; margin-top: 1.21rem;">Visual Audit in Progress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            </div>
-        </section>
+  <footer>
+    <div class="f-bottom">
+      <div>© 2026 THUBANI MEDIA GROUP</div>
+      
+    </div>
+  </footer>
 
-        <section id="contact" class="contact">
-            <div class="contact-wrap">
-                <h2>Ready to <i>deploy?</i></h2>
-                <a href="mailto:hello@thubani.media" class="email">hello@thubani.media</a>
-            </div>
-        </section>
-    </main>
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    const btnTop = document.getElementById('btnTop');
 
-    <footer>
-        <p>© 2026 Thubani Media. All rights reserved.</p>
-    </footer>
+    function toggleMenu() {
+      mobileNav.classList.toggle('active');
+      burger.classList.toggle('active');
+      
+      // Control body scroll when menu is active
+      if (mobileNav.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+    }
 
-    <button id="backToTop" title="Go to top">
-    <span class="arrow">↑</span>
-    
-</button>
+    burger.addEventListener('click', toggleMenu);
 
-<script>
-    const btn = document.querySelector("#backToTop");
-
-    window.addEventListener("scroll", () => {
-        // If we scroll down more than 400px, add the 'show' class
-        if (window.scrollY > 400) {
-            btn.classList.add("show");
-        } else {
-            btn.classList.remove("show");
-        }
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', toggleMenu);
     });
 
-    btn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-</script>
-
-<script>
-    const menu = document.querySelector('#mobile-menu');
-    const menuLinks = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-
-    // Toggle Mobile Menu
-    menu.addEventListener('click', function() {
-        menu.classList.toggle('is-active');
-        menuLinks.classList.toggle('active');
+    window.addEventListener('scroll', () => { 
+      btnTop.classList.toggle('is-visible', window.pageYOffset > 421.21); 
     });
 
-    // Close mobile menu when a link is clicked
-    navLinks.forEach(n => n.addEventListener('click', () => {
-        menu.classList.remove('is-active');
-        menuLinks.classList.remove('active');
-    }));
-</script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
