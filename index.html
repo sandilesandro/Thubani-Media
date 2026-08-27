@@ -2,77 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.21" />
-  <title>Thubani Media | Visual Infrastructure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thubani Media | Creative Design Agency</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-canvas:   #fbfaf8; 
-      --bg-void:     #0d0d0d;
+      --bg-canvas:    #fbfaf8; 
+      --bg-void:      #0b162d; 
+      --bg-void-card: #112142; 
       --bg-industrial:#edebe7;
-      --text-dark:   #111111;
-      --text-light:  #f4f4f4;
-      --accent:      #ff4503; 
-      --dim-dark:    #727272;
-      --rule-light:  #dbdad6;
-      --rule-dark:   #222222;
-      --serif:       'Playfair Display', serif;
-      --sans:        'Inter', sans-serif;
-      --mono:        'JetBrains Mono', monospace;
-      --edge-pad:    clamp(1.21rem, 4.21vw, 3.21rem); 
-      --nav-h:       72.21px;
+      --text-dark:    #111111;
+      --text-light:   #f4f4f4;
+      --accent:       #ff4503; 
+      --dim-dark:     #727272;
+      --rule-light:   #dbdad6;
+      --rule-dark:    #1b325f; 
+      --serif:        'Playfair Display', serif;
+      --sans:         'Inter', sans-serif;
+      --mono:         'JetBrains Mono', monospace;
+      --edge-pad:     clamp(1.25rem, 4.25vw, 3.25rem); 
+      --nav-h:        72px;
     }
 
     /* ─── CORE ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg-canvas); color: var(--text-dark); font-family: var(--sans); line-height: 1.62; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-
-    /* ─── ASSET ANIMATIONS ─── */
-    @keyframes glassFloat {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-21.21px) rotate(3.21deg); }
-      100% { transform: translateY(0) rotate(0deg); }
-    }
-    @keyframes pulseSoft {
-      0% { transform: scale(1); opacity: 0.81; }
-      50% { transform: scale(1.12); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.81; }
-    }
-
-    .glass-asset { position: absolute; pointer-events: none; z-index: 1.21; filter: drop-shadow(0 10.21px 21.21px rgba(0,0,0,0.12)); }
-    .cube-asset { width: 321.21px; top: 12.21%; right: -5.21%; animation: glassFloat 8.21s infinite ease-in-out; }
-    .triangle-asset { width: 421.21px; bottom: 12.21%; left: -8.21%; animation: glassFloat 10.21s infinite ease-in-out reverse; opacity: 0.41; }
-    .sphere-node { width: 62.21px; animation: pulseSoft 4.21s infinite ease-in-out; }
+    body { background: var(--bg-canvas); color: var(--text-dark); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body.menu-active { overflow: hidden; }
 
     /* ─── NAVIGATION ─── */
-    nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(251, 250, 248, 0.81); backdrop-filter: blur(18.21px); border-bottom: 1px solid rgba(0,0,0,0.06); }
-    .nav-inner { padding: 0 var(--edge-pad); height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo img { max-height: 32.21px; width: auto; }
+    nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(251, 250, 248, 0.85); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(0,0,0,0.06); transition: background 0.4s, border-color 0.4s; }
+    .nav-inner { padding: 0 var(--edge-pad); height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1201; }
+    .nav-logo { display: block; transition: filter 0.4s; z-index: 1202; }
+    .nav-logo img { max-height: 32px; width: auto; display: block; }
     
-    .nav-links { display: flex; gap: 3.21rem; list-style: none; }
-    .nav-links a { text-decoration: none; font-size: 0.71rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--dim-dark); transition: 0.31s; }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--dim-dark); transition: 0.3s; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* Hamburger Menu & X Animation */
-    .burger { display: none; cursor: pointer; background: none; border: none; padding: 0.81rem; z-index: 2000; position: relative; }
-    .burger span { display: block; width: 24.21px; height: 1.21px; background: var(--text-dark); margin: 6.21px 0; transition: 0.41s; transform-origin: center; }
+    /* Hamburger Menu Button */
+    .burger { display: none; cursor: pointer; background: none; border: none; width: 28px; height: 20px; z-index: 1202; position: relative; padding: 0; }
+    .burger span { display: block; position: absolute; width: 100%; height: 2px; background: var(--text-dark); transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease, top 0.3s ease; left: 0; }
     
-    .burger.active span:nth-child(1) { transform: translateY(7.42px) rotate(45deg); background: #fff; opacity: 100%;}
-    .burger.active span:nth-child(2) { opacity: 0; }
-    .burger.active span:nth-child(3) { transform: translateY(-7.42px) rotate(-45deg); background: #fff; opacity: 100% }
+    .burger span:nth-child(1) { top: 0; }
+    .burger span:nth-child(2) { top: 9px; }
+    .burger span:nth-child(3) { top: 18px; }
 
-    /* Mobile Overlay */
-    .mobile-nav { position: fixed; top: 0; right: -100%; width: 100%; height: 100dvh; background: var(--bg-void); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1050; transition: 0.61s cubic-bezier(0.16, 1, 0.3, 1); }
-    .mobile-nav.active { right: 0; }
-    .mobile-nav a { font-family: var(--sans); color: #fff; font-size: 1.81rem; font-weight: 300; text-transform: uppercase; letter-spacing: 0.41rem; text-decoration: none; margin: 1.21rem 0; opacity: 0; transform: translateY(21.21px); transition: 0.41s; }
-    .mobile-nav.active a { opacity: 1; transform: translateY(0); transition-delay: 0.31s; }
+    /* Sync Navigation State Styles */
+    body.menu-active nav { background: rgba(11, 22, 45, 0.98); border-bottom-color: var(--rule-dark); }
+    body.menu-active .nav-logo { filter: invert(1) brightness(2.2); }
+    
+    body.menu-active .burger span { background: var(--text-light); }
+    body.menu-active .burger span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+    body.menu-active .burger span:nth-child(2) { opacity: 0; transform: scale(0); }
+    body.menu-active .burger span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+    /* Mobile Overlay Menu */
+    .mobile-nav { position: fixed; inset: 0; width: 100vw; height: 100dvh; background: var(--bg-void); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1100; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.4s ease, visibility 0.4s ease; padding: var(--nav-h) var(--edge-pad) 2rem var(--edge-pad); }
+    .mobile-nav.active { opacity: 1; visibility: visible; pointer-events: auto; }
+    .mobile-nav a { font-family: var(--sans); color: #fff; font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.3rem; text-decoration: none; margin: 0.8rem 0; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease; text-align: center; }
+    .mobile-nav.active a { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+    .mobile-nav a:hover { color: var(--accent); }
 
     /* ─── BACK TO TOP ─── */
-    .btn-top { position: fixed; bottom: 32.21px; right: 32.21px; width: 48.21px; height: 48.21px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 4.21px; border: none; cursor: pointer; z-index: 900; opacity: 0; visibility: hidden; transition: 0.41s; box-shadow: 0 4.21px 21.21px rgba(255, 69, 3, 0.21); }
+    .btn-top { position: fixed; bottom: 50px; right: 30px; width: 48px; height: 48px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: none; cursor: pointer; z-index: 900; opacity: 0; visibility: hidden; transition: 0.4s; box-shadow: 0 4px 20px rgba(255, 69, 3, 0.2); }
     .btn-top.is-visible { opacity: 1; visibility: visible; }
 
     /* ─── HERO ─── */
@@ -80,92 +76,156 @@
       position: relative;
       min-height: 100dvh; 
       padding-top: var(--nav-h); 
-      background-image: linear-gradient(rgba(0,0,0,0.51), rgba(0,0,0,0.51)), url('h.jpg');
+      background-image: linear-gradient(rgba(11,22,45,0.65), rgba(11,22,45,0.65)), url('h.jpg');
       background-size: cover;
       background-position: center;
       display: flex; align-items: center; 
       padding-left: var(--edge-pad); 
+      padding-right: var(--edge-pad);
       overflow: hidden;
     }
-    .hero h1 { font-family: var(--serif); color: #ffffff; font-size: clamp(3.21rem, 9.21vw, 8.81rem); line-height: 0.89; z-index: 2.21; position: relative; }
+    .hero h1 { font-family: var(--serif); color: #ffffff; font-size: clamp(2.8rem, 8vw, 8.5rem); line-height: 0.95; z-index: 2; position: relative; }
     .hero h1 em { font-style: italic; color: var(--accent); }
 
-    .scroll-down {
-      position: absolute; bottom: 4.21rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 1.21rem; text-decoration: none; z-index: 10;
-    }
-    .scroll-line {
-      width: 1.21px; height: 64.21px; background: rgba(255,255,255,0.21);
-      position: relative; overflow: hidden;
-    }
-    .scroll-line::after {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--accent); transform: translateY(-100%);
-      animation: scroll-flow 2.21s infinite cubic-bezier(0.65, 0, 0.35, 1);
-    }
-    @keyframes scroll-flow { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-    .scroll-text { font-family: var(--mono); font-size: 0.61rem; color: #fff; text-transform: uppercase; letter-spacing: 0.21rem; }
-
     /* ─── SECTIONS ─── */
-    section { position: relative; padding: 12.21vh var(--edge-pad); }
-    .label { font-family: var(--mono); color: var(--accent); font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.16rem; display: block; margin-bottom: 3.21rem; }
-    .reveal { opacity: 0; transform: translateY(32.21px); transition: 1.21s cubic-bezier(0.16, 1, 0.3, 1); }
+    section { position: relative; padding: 10vh var(--edge-pad); }
+    .label { font-family: var(--mono); color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15rem; display: block; margin-bottom: 2.5rem; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1.1s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.active { opacity: 1; transform: none; }
 
-    .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6.21rem; }
-    .sector-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(221.21px, 1fr)); gap: 1.21rem; margin-top: 6.21rem; }
-    .sector-card { padding: 3.21rem; border: 1px solid var(--rule-light); background: #fff; transition: 0.31s; }
-    .sector-card:hover { border-color: var(--accent); transform: translateY(-4.21px); }
+    .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
 
-    /* Visual Systems */
+    /* ─── STATS COUNTER BAR ─── */
+    .stats-bar { background: var(--bg-void); border-top: 1px solid var(--rule-dark); border-bottom: 1px solid var(--rule-dark); padding: 4rem var(--edge-pad); color: #fff; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: left; }
+    .stat-item .stat-num { font-family: var(--serif); font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-item .stat-label { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1rem; color: var(--dim-dark); }
+
+    /* ─── WHO WE ARE ─── */
+    #about { background: var(--bg-canvas); }
+    .about-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+    .about-statement h2 { font-family: var(--serif); font-size: clamp(2.3rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 2rem; }
+    .about-statement h2 em { font-style: italic; color: var(--accent); }
+    .about-statement p { color: var(--dim-dark); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .about-pillars { display: flex; flex-direction: column; gap: 2rem; border-left: 1px solid var(--rule-light); padding-left: 3rem; }
+    .pillar-item span { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1rem; display: block; margin-bottom: 0.4rem; }
+    .pillar-item h4 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 0.5rem; }
+    .pillar-item p { color: var(--dim-dark); font-size: 0.88rem; line-height: 1.5; }
+
+    /* ─── AGENCY LEADERSHIP ─── */
+    #leadership { background: var(--bg-industrial); border-bottom: 1px solid var(--rule-light); }
+    .leadership-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .leader-intro h2 { font-family: var(--serif); font-size: clamp(2.3rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .leader-intro h2 em { font-style: italic; color: var(--accent); }
+    .leader-role { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15rem; color: var(--accent); margin-bottom: 1.5rem; display: block; font-weight: 600; }
+    .leader-intro p { color: var(--dim-dark); font-size: 0.98rem; line-height: 1.7; margin-bottom: 2rem; }
+    
+    .leader-details { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; border-top: 1px solid var(--rule-light); padding-top: 2.5rem; }
+    .leader-spec h4 { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1rem; color: var(--text-dark); margin-bottom: 0.6rem; font-weight: 600; }
+    .leader-spec p { color: var(--dim-dark); font-size: 0.85rem; line-height: 1.5; }
+
+    /* ─── SERVICES SECTION ─── */
     #systems { background: var(--bg-void); color: var(--text-light); }
-    .cap-row { display: grid; grid-template-columns: 81.21px 1.51fr 1fr; padding: 4.21rem; background: #151515; border: 1px solid var(--rule-dark); margin-bottom: 1.21rem; }
+    .services-header-flex { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem; }
+    .services-header-flex h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.2rem); max-width: 600px; line-height: 1.15; }
+    .services-header-flex p { color: var(--dim-dark); font-size: 0.95rem; max-width: 400px; }
+
+    .systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .cap-card { padding: 2.5rem 2rem; background: var(--bg-void-card); border: 1px solid var(--rule-dark); display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.3s, transform 0.3s; min-height: 320px; }
+    .cap-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .cap-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+    .cap-num { color: var(--accent); font-family: var(--mono); font-size: 1.3rem; font-weight: 600; }
+    .system-icon-wrap { color: var(--accent); }
+    .system-icon-wrap svg { width: 30px; height: 30px; transition: transform 0.4s ease-in-out; }
+    .cap-card:hover .system-icon-wrap svg { transform: scale(1.12); }
+    .cap-card h3 { font-size: 1.25rem; line-height: 1.2; margin-bottom: 0.8rem; }
+    .cap-card p { font-size: 0.85rem; line-height: 1.5; color: var(--dim-dark); margin-bottom: 1.5rem; }
+    .cap-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px solid var(--rule-dark); padding-top: 1rem; }
+    .cap-list li { font-family: var(--mono); font-size: 0.68rem; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+    .cap-list li::before { content: "—"; color: var(--accent); }
+
+    /* ─── FEATURED PRODUCTS / TECH GRID ─── */
+    #products { background: var(--bg-canvas); }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .product-card { background: #fff; border: 1px solid var(--rule-light); padding: 2.5rem; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+    .product-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .product-card h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 1rem; }
+    .product-card p { color: var(--dim-dark); font-size: 0.88rem; margin-bottom: 2rem; }
+    .product-link { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; color: var(--accent); text-decoration: none; letter-spacing: 0.1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; }
 
     /* Portfolio Masonry */
-    #portfolio { padding: 0; background: var(--bg-void); }
+    #portfolio { padding: 0; background: var(--bg-void); border-bottom: 1px solid var(--rule-dark); margin-top: 0; }
     .masonry { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule-dark); }
-    .masonry-item { height: 421.21px; overflow: hidden; }
-    .masonry-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.41; filter: grayscale(1); transition: 0.81s; }
-    .masonry-item:hover img { opacity: 1; filter: grayscale(0); }
+    .masonry-item { height: 80px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #070e1c; padding: 1rem; }
+    .masonry-item img { max-width: 100%; max-height: 100%; object-fit: contain; opacity: 0.3; filter: grayscale(1); transition: 0.4s ease-in-out; }
+    .masonry-item:hover img { opacity: 0.9; filter: grayscale(0); }
 
-    /* Industrial Contact */
+    /* Contact */
     #industrial { background: var(--bg-industrial); }
-    .form-wrap { background: #fff; padding: 4.21rem; border: 1px solid var(--rule-light); }
-    .form-group { margin-bottom: 2.21rem; }
-    .form-group label { display: block; font-family: var(--mono); font-size: 0.61rem; text-transform: uppercase; margin-bottom: 0.81rem; color: var(--dim-dark); }
-    .form-group input, .form-group textarea { width: 100%; padding: 1.21rem; border: 1px solid var(--rule-light); background: var(--bg-canvas); outline: none; }
-    .submit-btn { width: 100%; padding: 1.21rem; background: var(--accent); color: #fff; border: none; font-family: var(--mono); font-size: 0.71rem; text-transform: uppercase; letter-spacing: 0.21rem; cursor: pointer; transition: 0.31s; }
+    .form-wrap { background: #fff; padding: 3.5rem; border: 1px solid var(--rule-light); }
+    .form-group { margin-bottom: 2rem; }
+    .form-group label { display: block; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; margin-bottom: 0.7rem; color: var(--dim-dark); }
+    .form-group input, .form-group textarea { width: 100%; padding: 1.1rem; border: 1px solid var(--rule-light); background: var(--bg-canvas); outline: none; font-family: var(--sans); font-size: 0.95rem; }
+    .submit-btn { width: 100%; padding: 1.1rem; background: var(--accent); color: #fff; border: none; font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; cursor: pointer; transition: 0.3s; }
+    .submit-btn:hover { opacity: 0.9; }
 
-    footer { background: #050505; color: #fff; padding: 6.21vh var(--edge-pad) 3.21rem; border-top: 1px solid #111; }
-    .f-bottom { display: flex; justify-content: space-between; font-size: 0.61rem; font-family: var(--mono); opacity: 0.31; }
+    /* ─── EXPANDED FOOTER ─── */
+    footer { background: #050a14; color: #fff; padding: 8vh var(--edge-pad) 5rem; border-top: 1px solid var(--rule-dark); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 5rem; }
+    .footer-col h4 { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15rem; color: var(--accent); margin-bottom: 1.8rem; }
+    .footer-col p { color: #8c97ad; font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .footer-links a { color: #8c97ad; text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    
+    .footer-newsletter input { width: 100%; padding: 0.9rem 1rem; background: #0b162d; border: 1px solid var(--rule-dark); color: #fff; font-family: var(--sans); font-size: 0.85rem; margin-bottom: 0.8rem; outline: none; }
+    .footer-newsletter input:focus { border-color: var(--accent); }
+    .footer-newsletter button { width: 100%; padding: 0.9rem; background: var(--accent); color: #fff; border: none; font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15rem; cursor: pointer; transition: opacity 0.3s; }
+    .footer-newsletter button:hover { opacity: 0.9; }
 
-    @media (max-width: 1024.21px) { 
-      .grid-split { grid-template-columns: 1fr; gap: 4.21rem; } 
+    .f-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(27, 50, 95, 0.5); padding-top: 3rem; padding-right: 5rem; font-size: 0.7rem; font-family: var(--mono); color: #8c97ad; flex-wrap: wrap; gap: 2rem; }
+    .f-socials { display: flex; gap: 2rem; }
+    .f-socials a { color: #8c97ad; text-decoration: none; transition: color 0.3s; }
+    .f-socials a:hover { color: var(--accent); }
+
+    /* ─── SYSTEM RESPONSIVE QUERIES ─── */
+    @media (max-width: 1024px) { 
+      .grid-split, .leadership-layout, .stats-grid, .product-grid, .systems-grid, .about-layout, .leader-details, .footer-grid { grid-template-columns: 1fr; gap: 3rem; } 
+      .about-pillars { border-left: none; padding-left: 0; border-top: 1px solid var(--rule-light); padding-top: 2rem; }
       .masonry { grid-template-columns: repeat(2, 1fr); } 
       .nav-links { display: none; } 
       .burger { display: block; }
+      .masonry-item { height: 70px; padding: 0.8rem; }
+      .form-wrap { padding: 2rem; }
+      .f-bottom { padding-right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: clamp(2.5rem, 11vw, 4rem); }
+      section { padding: 8vh var(--edge-pad); }
     }
   </style>
 </head>
 <body>
 
-  <button class="btn-top" id="btnTop" onclick="window.scrollTo(0,0)">
+  <button class="btn-top" id="btnTop" onclick="window.scrollTo(0,0)" aria-label="Scroll to top">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo"><img src="Thubanimedia_Logo_Wordmark.png" alt="Thubani Media"></div>
+      <a href="#" class="nav-logo" id="logoLink"><img src="Thubanimedia_Logo_Wordmark.png" alt="Thubani Media"></a>
       
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#leadership">Director</a></li>
-        <li><a href="#systems">Systems</a></li>
-        <li><a href="#portfolio">Deployments</a></li>
+        <li><a href="#leadership">Creative Director</a></li>
+        <li><a href="#systems">Services</a></li>
+        <li><a href="#products">Technology</a></li>
+        <li><a href="#portfolio">Clients</a></li>
         <li><a href="#industrial">Contact</a></li>
       </ul>
 
-      <button class="burger" id="burger">
+      <button class="burger" id="burger" aria-label="Toggle Navigation Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -174,114 +234,350 @@
   </nav>
 
   <div class="mobile-nav" id="mobileNav">
-    <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="#leadership" onclick="toggleMenu()">Director</a>
-    <a href="#systems" onclick="toggleMenu()">Systems</a>
-    <a href="#portfolio" onclick="toggleMenu()">Deployments</a>
-    <a href="#industrial" onclick="toggleMenu()">Contact</a>
+    <a href="#about">About</a>
+    <a href="#leadership">Creative Director</a>
+    <a href="#systems">Services</a>
+    <a href="#products">Technology</a>
+    <a href="#portfolio">Clients</a>
+    <a href="#industrial">Contact</a>
   </div>
 
   <section class="hero">
-    <img src="images/cube.png" class="glass-asset cube-asset">
     <h1 class="reveal">Engineering <em>Visual</em> Authority.</h1>
-    <a href="#about" class="scroll-down reveal"><div class="scroll-line"></div><span class="scroll-text">Scroll Down</span></a>
   </section>
 
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <div class="stat-num">08+</div>
+        <div class="stat-label">Years in Business</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">70%</div>
+        <div class="stat-label">Client Referral Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">05</div>
+        <div class="stat-label">Countries Reached</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO WE ARE SECTION -->
   <section id="about">
-    <img src="images/Diamond.png" class="glass-asset triangle-asset">
-    <span class="label reveal">The Core Intent</span>
-    <div class="grid-split reveal">
-      <div class="about-lead"><h2 style="font-family: var(--serif); font-size: 3.21rem;">Technical Precision.</h2></div>
-      <div class="about-body">
-        <p>Thubani Media engineers visual infrastructure for the industrial and corporate landscapes of South Africa.</p>
-        <img src="images/triangle.png" class="sphere-node" style="margin-top: 2.21rem;">
+    <span class="label reveal">Who We Are</span>
+    <div class="about-layout reveal">
+      <div class="about-statement">
+        <h2>We build brands that command <em>attention</em>.</h2>
+        <p>Thubani Media is an independent full-service creative agency operating at the exact intersection of visionary design and high-performance engineering.</p>
+        <p>We reject cookie-cutter templates and conventional trends. Instead, we craft uncompromising visual architectures and digital experiences designed to give modern enterprises enduring cultural relevance and market dominance.</p>
       </div>
-    </div>
-    <div class="sector-grid reveal">
-      <div class="sector-card"><h3>Cloud ERP</h3><p>Acumatica visualization and strategy.</p></div>
-      <div class="sector-card"><h3>Public Sector</h3><p>Technical RFQ frameworks.</p></div>
-      <div class="sector-card"><h3>Agriculture</h3><p>Identity for Gentlemen Farmers Club.</p></div>
-    </div>
-  </section>
 
-<section id="leadership" style="background: #fff; border-bottom: 1px solid var(--rule-light);">
-    <span class="label reveal">Executive Infrastructure</span>
-    <div class="grid-split reveal">
-      <div>
-        <h2 class="lead-text">Sandile <br><em>Mnguni</em></h2>
-      </div>
-      <div class="bio-content">
-        <p>As the Lead Strategic Director of Thubani Media, Sandile engineers the visual infrastructure required for complex technical and corporate entities.</p>
-        <p>With deep expertise in multimedia strategy and web architecture, he bridges the gap between high-end aesthetic design and functional industrial requirements.</p>
-        
-        <div class="stats-row">
-          <div class="stat-item">
-            <h4>Strategic Role</h4>
-            <p>Directing visual identity for ERP partners and public sector procurement frameworks.</p>
-          </div>
-          <div class="stat-item">
-            <h4>Technical Core</h4>
-            <p>Specialized in Adobe Creative Suite, Autodesk Maya, and Cloud ERP integrations.</p>
-          </div>
+      <div class="about-pillars">
+        <div class="pillar-item">
+          <span>Philosophy 01</span>
+          <h4>Radical Precision</h4>
+          <p>Every line of code, pixel layout, and campaign asset is meticulously engineered with purpose, leaving zero room for static noise.</p>
+        </div>
+        <div class="pillar-item">
+          <span>Philosophy 02</span>
+          <h4>Culture Meets Code</h4>
+          <p>We merge deep creative storytelling with modern digital technologies to forge immersive multi-channel interactions.</p>
+        </div>
+        <div class="pillar-item">
+          <span>Philosophy 03</span>
+          <h4>Uncompromising Scale</h4>
+          <p>Our solutions are built from the ground up to evolve fluidly alongside your business as it expands into global markets.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="systems">
-    <span class="label reveal">Visual Systems</span>
-    <div class="cap-row reveal">
-      <span style="color: var(--accent); font-family: var(--mono);">01.</span>
-      <div><h3>Multimedia Strategy</h3><p>Cinematic logic for institutional compliance.</p></div>
-      <div style="font-family: var(--mono); font-size: 0.61rem; color: var(--accent); text-align: right;"></div>
-    </div>
-    <div class="cap-row reveal">
-      <span style="color: var(--accent); font-family: var(--mono);">02.</span>
-      <div><h3>Multimedia Strategy</h3><p>Cinematic logic for institutional compliance.</p></div>
-      <div style="font-family: var(--mono); font-size: 0.61rem; color: var(--accent); text-align: right;"></div>
-    </div>
-    <div class="cap-row reveal">
-      <span style="color: var(--accent); font-family: var(--mono);">03.</span>
-      <div><h3>Multimedia Strategy</h3><p>Cinematic logic for institutional compliance.</p></div>
-      <div style="font-family: var(--mono); font-size: 0.61rem; color: var(--accent); text-align: right;"></div>
+  <!-- AGENCY LEADERSHIP SECTION -->
+  <section id="leadership">
+    <span class="label reveal">Agency Leadership</span>
+    <div class="leadership-layout reveal">
+      <div class="leader-intro">
+        <span class="leader-role">Founder & Creative Director</span>
+        <h2>Sandile <br><em>Mnguni</em></h2>
+        <p>Directing the creative vision and artistic execution behind every brand rollout, Sandile combines rigorous structural design principles with modern digital storytelling.</p>
+        <p>With nearly a decade spent shaping visual narratives for scaling businesses, his approach focuses on eliminating unnecessary visual clutter to highlight core utility and distinct brand equity.</p>
+      </div>
+
+      <div class="leader-details">
+        <div class="leader-spec">
+          <h4>Vision & Strategy</h4>
+          <p>Directing high-stakes corporate identity overhauls and long-term brand equity frameworks across multiple industry verticals.</p>
+        </div>
+        <div class="leader-spec">
+          <h4>Creative Direction</h4>
+          <p>Overseeing multi-disciplinary teams in art direction, interface systems architecture, and high-impact digital campaign production.</p>
+        </div>
+        <div class="leader-spec">
+          <h4>Design Philosophy</h4>
+          <p>Advocating for brutalist clarity, minimalist restraint, and functional execution that drives measurable business conversion.</p>
+        </div>
+        <div class="leader-spec">
+          <h4>Global Rollout</h4>
+          <p>Guiding cross-border media deployments and digital infrastructure transformations for international enterprise clients.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- SERVICES SECTION -->
+  <section id="systems">
+    <div class="services-header-flex reveal">
+      <div>
+        <span class="label" style="margin-bottom: 1rem;">01. Core Capabilities</span>
+        <h2>Comprehensive creative design</h2>
+      </div>
+      <p>We architect full-spectrum digital ecosystems designed to elevate brand perception, increase user engagement, and drive sustained conversion growth.</p>
+    </div>
+    
+    <div class="systems-grid">
+      <!-- Card 1 -->
+      <div class="cap-card reveal">
+        <div>
+          <div class="cap-card-top">
+            <span class="cap-num">01.</span>
+            <div class="system-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 17 22 12"></polyline>
+              </svg>
+            </div>
+          </div>
+          <h3>Brand Strategy</h3>
+          <p>Defining unforgettable style directions and strategic positioning blueprints that set your business apart in competitive markets.</p>
+        </div>
+        <ul class="cap-list">
+          <li>Visual Identity & Guidelines</li>
+          <li>Market Position Analysis</li>
+          <li>Brand Architecture Mapping</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cap-card reveal">
+        <div>
+          <div class="cap-card-top">
+            <span class="cap-num">02.</span>
+            <div class="system-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+                <line x1="14" y1="4" x2="10" y2="20"></line>
+              </svg>
+            </div>
+          </div>
+          <h3>Web Development</h3>
+          <p>Building high-performance, ultra-responsive modern sites optimized for conversion rates, SEO velocity, and seamless interactivity.</p>
+        </div>
+        <ul class="cap-list">
+          <li>Custom Frontend Engineering</li>
+          <li>Headless CMS Integrations</li>
+          <li>Performance Optimization</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="cap-card reveal">
+        <div>
+          <div class="cap-card-top">
+            <span class="cap-num">03.</span>
+            <div class="system-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 7l-7 5 7 5V7z"></path>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+          </div>
+          <h3>Digital Content</h3>
+          <p>Developing commercial video assets, immersive graphics, and multimedia marketing packages tailored for multi-channel dominance.</p>
+        </div>
+        <ul class="cap-list">
+          <li>Commercial Video Production</li>
+          <li>Motion Graphics & Animation</li>
+          <li>Social Media Asset Suites</li>
+        </ul>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="cap-card reveal">
+        <div>
+          <div class="cap-card-top">
+            <span class="cap-num">04.</span>
+            <div class="system-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+          </div>
+          <h3>Interface Design</h3>
+          <p>Mapping seamless app wireframes, intuitive user journeys, and pixel-perfect UI systems that prioritize user retention.</p>
+        </div>
+        <ul class="cap-list">
+          <li>UI/UX Wireframing & Prototyping</li>
+          <li>Design System Architecture</li>
+          <li>User Experience Research</li>
+        </ul>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="cap-card reveal">
+        <div>
+          <div class="cap-card-top">
+            <span class="cap-num">05.</span>
+            <div class="system-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+          </div>
+          <h3>Brand Voice</h3>
+          <p>Writing highly targeted marketing statements, copywriting manuals, and brand messaging frameworks that convert readers into loyal advocates.</p>
+        </div>
+        <ul class="cap-list">
+          <li>Tone of Voice Guidelines</li>
+          <li>Conversion Copywriting</li>
+          <li>Campaign Messaging Strategy</li>
+        </ul>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="cap-card reveal">
+        <div>
+          <div class="cap-card-top">
+            <span class="cap-num">06.</span>
+            <div class="system-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </div>
+          </div>
+          <h3>Media Rollout</h3>
+          <p>Deploying digital marketing assets across live distribution channels with continuous tracking, analytics auditing, and performance tuning.</p>
+        </div>
+        <ul class="cap-list">
+          <li>Multi-Channel Deployment</li>
+          <li>Campaign Analytics Tracking</li>
+          <li>Post-Launch Optimization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section id="products">
+    <span class="label reveal">02. Featured Technologies</span>
+    <h2 class="reveal" style="font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 1.2rem;">Custom tech solutions built for scale.</h2>
+    <div class="product-grid reveal">
+      <div class="product-card">
+        <div>
+          <h3>Enterprise Systems</h3>
+          <p>Robust framework integrations and cloud infrastructure designed to optimize internal business pipelines.</p>
+        </div>
+        <a href="#industrial" class="product-link">Explore Tech &rarr;</a>
+      </div>
+      <div class="product-card">
+        <div>
+          <h3>Immersive UI Engines</h3>
+          <p>High-speed frontend modules engineered for fluid interactions and optimal conversion metrics.</p>
+        </div>
+        <a href="#industrial" class="product-link">Explore Tech &rarr;</a>
+      </div>
+      <div class="product-card">
+        <div>
+          <h3>Digital Media Suites</h3>
+          <p>Automated deployment architectures for seamless distribution of creative campaigns globally.</p>
+        </div>
+        <a href="#industrial" class="product-link">Explore Tech &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR CLIENTS SECTION -->
   <section id="portfolio">
+    <span class="label reveal" style="color: var(--accent); padding-left: var(--edge-pad); margin-top: 0; margin-bottom: 2rem;">03. Our Clients</span>
+    
     <div class="masonry reveal">
-      <div class="masonry-item"><img src="msf.jpg"></div>
-      <div class="masonry-item"><img src="mbvit.png"></div>
-      <div class="masonry-item"><img src="pluxnet.png"></div>
-      <div class="masonry-item"><img src="gfc.png"></div>
+      <div class="masonry-item"><img src="msf.jpg" alt="Client Logo 1"></div>
+      <div class="masonry-item"><img src="mbvit.png" alt="Client Logo 2"></div>
+      <div class="masonry-item"><img src="pluxnet.png" alt="Client Logo 3"></div>
+      <div class="masonry-item"><img src="gfc.png" alt="Client Logo 4"></div>
     </div>
   </section>
 
   <section id="industrial">
-    <span class="label reveal">Transmission</span>
+    <span class="label reveal">04. Get In Touch</span>
     <div class="grid-split reveal">
-      <div class="contact-info">
-        <h2 style="font-family: var(--serif); font-size: 3.21rem;">Initiate <em>Strategic</em> Deployment.</h2>
-        <p style="margin-top: 2.21rem; color: var(--dim-dark);">Fill out the technical brief below to begin your entity's visual audit.</p>
-      </div>
       <div class="form-wrap">
+        <h3 style="font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.1rem); margin-bottom: 1.5rem;">Let’s talk about your project.</h3>
+        <p style="color: var(--dim-dark); font-size: 0.9rem; margin-bottom: 2rem;">We're eager to hear your ideas and discuss how we can bring them to life.</p>
         <form id="contactForm">
           <div class="form-group"><label>Name</label><input type="text" required></div>
           <div class="form-group"><label>Email Address</label><input type="email" required></div>
-          <div class="form-group"><label>Technical Brief</label><textarea rows="4" required></textarea></div>
-          <button type="submit" class="submit-btn">Send</button>
+          <div class="form-group"><label>Message</label><textarea rows="4" required></textarea></div>
+          <button type="submit" class="submit-btn">Let's Connect</button>
         </form>
-        <div id="formSuccess" style="display:none; text-align: center; padding: 2.21rem;">
-          <h3 style="font-family: var(--serif); font-size: 1.81rem; color: var(--accent);">Transmission Received.</h3>
-          <p style="font-family: var(--mono); font-size: 0.71rem; margin-top: 1.21rem;">Visual Audit in Progress.</p>
-        </div>
       </div>
     </div>
   </section>
 
+  <!-- EXPANDED FOOTER -->
   <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Thubani Media</h4>
+        <p>An independent creative agency operating at the intersection of brutalist clarity, visual design, and high-performance digital systems engineering.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Agency</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#systems">Core Services</a></li>
+          <li><a href="#products">Technology</a></li>
+          <li><a href="#portfolio">Our Clients</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#systems">Brand Strategy</a></li>
+          <li><a href="#systems">Web Development</a></li>
+          <li><a href="#systems">Digital Content</a></li>
+          <li><a href="#systems">Interface Design</a></li>
+          <li><a href="#systems">Media Rollout</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Subscribe to our periodic insights on digital architecture and design systems.</p>
+        <form onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    
     <div class="f-bottom">
-      <div>© 2026 THUBANI MEDIA GROUP</div>
-      
+      <div>© 2026 THUBANI MEDIA GROUP. ALL RIGHTS RESERVED.</div>
+      <div class="f-socials">
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">Twitter</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </div>
   </footer>
 
@@ -289,40 +585,40 @@
     const burger = document.getElementById('burger');
     const mobileNav = document.getElementById('mobileNav');
     const btnTop = document.getElementById('btnTop');
+    const logoLink = document.getElementById('logoLink');
 
-    function toggleMenu() {
-      mobileNav.classList.toggle('active');
-      burger.classList.toggle('active');
-      
-      // Control body scroll when menu is active
-      if (mobileNav.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
+    function closeMenu() {
+      mobileNav.classList.remove('active');
+      document.body.classList.remove('menu-active');
+    }
+
+    function toggleMenu(e) {
+      e.stopPropagation();
+      const isActive = mobileNav.classList.contains('active');
+      if (isActive) {
+        closeMenu();
       } else {
-        document.body.style.overflow = 'auto';
+        mobileNav.classList.add('active');
+        document.body.classList.add('menu-active');
       }
     }
 
     burger.addEventListener('click', toggleMenu);
+    logoLink.addEventListener('click', closeMenu);
 
-    // Close menu when clicking a link
     document.querySelectorAll('.mobile-nav a').forEach(link => {
-      link.addEventListener('click', toggleMenu);
+      link.addEventListener('click', closeMenu);
     });
 
     window.addEventListener('scroll', () => { 
-      btnTop.classList.toggle('is-visible', window.pageYOffset > 421.21); 
+      btnTop.classList.toggle('is-visible', window.pageYOffset > 400); 
     });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
+    
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    });
   </script>
 </body>
 </html>
